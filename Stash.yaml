@@ -56,7 +56,7 @@ proxy-providers:
 
   MyProxy: &MyProxy #建立锚点
      #多机场用户请使用Sub-Store生成自己的订阅地址并替换以下url地址
-    url: https://sub.store/download/collection/MySub
+    url: http://sub.store/download/collection/MySub
     interval: 86400
     health-check:
       enable: true
@@ -156,7 +156,19 @@ proxy-groups:
   - Final
   - DIRECT
   icon: https://raw.githubusercontent.com/erdongchanyo/icon/main/Policy-Filter/GMedia.png
-
+  
+  name: Cryptocurrency
+  type: select
+  proxies:
+  - US
+  - HK
+  - JP
+  - TW
+  - SG
+  - Final
+  - DIRECT
+  icon: https://raw.githubusercontent.com/Koolson/Qure@master/IconSet/Color/Cryptocurrency_3.png
+  
 - name: Netflix
   type: select
   proxies:
@@ -380,6 +392,12 @@ proxy-groups:
 #远程规则集合声明
 rule-providers:
 
+  Cryptocurrency-rules:
+    behavior: classical
+    interval: 86400
+    name: Cryptocurrency
+    url: https://raw.githubusercontent.com/yawenchim/QuantumultX-mix/master/rule/Cryptocurrency.list
+
   Netflix-rules:
     behavior: classical
     interval: 86400
@@ -506,6 +524,7 @@ rule-providers:
 
 #分流规则引用
 rules:
+- RULE-SET,Cryptocurrency-rules,Cryptocurrency
 - RULE-SET,Netflix-rules,Netflix
 - RULE-SET,Disney-rules,Disney+
 - RULE-SET,HBO-rules,HBO
