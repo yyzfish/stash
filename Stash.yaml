@@ -394,10 +394,10 @@ proxy-groups:
 rule-providers:
 
   Cryptocurrency-rules:
-    behavior: classical
+    behavior: domain-text
     interval: 86400
     name: Cryptocurrency
-    url: "https://raw.githubusercontent.com/yyzfish/stash/main/Cryptocurrency.text"
+    url: https://raw.githubusercontent.com/yyzfish/stash/main/Cryptocurrency.text
 
   Netflix-rules:
     behavior: classical
