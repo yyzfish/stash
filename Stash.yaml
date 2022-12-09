@@ -397,7 +397,7 @@ rule-providers:
     behavior: classical
     interval: 86400
     name: Cryptocurrency
-    url: https://raw.githubusercontent.com/yawenchim/QuantumultX-mix/master/rule/Cryptocurrency.list
+    url: "https://raw.githubusercontent.com/yyzfish/stash/main/Cryptocurrency.text"
 
   Netflix-rules:
     behavior: classical
