@@ -386,6 +386,7 @@ proxy-groups:
   proxies:
   - DIRECT
   - Auto-HK
+  - HK
   - Proxy
   icon: https://raw.githubusercontent.com/erdongchanyo/icon/main/Policy-Filter/Final01.png
 
