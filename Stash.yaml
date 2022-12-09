@@ -157,7 +157,7 @@ proxy-groups:
   - DIRECT
   icon: https://raw.githubusercontent.com/erdongchanyo/icon/main/Policy-Filter/GMedia.png
   
-  name: Cryptocurrency
+- name: Cryptocurrency
   type: select
   proxies:
   - US
