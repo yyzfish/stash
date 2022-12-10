@@ -81,7 +81,7 @@ proxy-providers:
   #台湾节点
   MyProxy-TW:
     <<: *MyProxy #引用锚点内容
-    filter: "台|台湾|TW"
+    filter: "台|台湾|TW|Taiwan"
   
   #新加坡节点
   MyProxy-SG:
