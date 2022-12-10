@@ -1,0 +1,140 @@
+log-level: info
+mode: rule
+ipv6: true
+
+allow-lan: true
+mixed-port: 7890
+bind-address: '*'
+
+profile:
+  store-selected: false
+  store-fake-ip: true
+
+subscribe-url: &suburl <suburl> # https://degyax.com/user/index.html#/register?code=apc0YX7Y, a great network service provider recommended.
+
+proxy-groups:
+- name: $tash
+  icon: https://raw.githubusercontent.com/shindgewongxj/WHATSINStash/main/icon/network.png
+  type: select
+  url: &pingurl http://www.gstatic.com/generate_204
+  # Apple:      http://captive.apple.com
+  # Google:     http://www.gstatic.com/generate_204
+  # Microsoft:  http://www.msftconnecttest.com/connecttest.txt
+  # Cloudflare: http://cp.cloudflare.com
+  # V2EX:       http://www.v2ex.com/generate_204
+  interval: 600
+  proxies:
+    - Select
+    - Auto
+    - Load Balance
+    - Fallback
+- name: Select
+  icon: https://raw.githubusercontent.com/shindgewongxj/WHATSINStash/main/icon/select.png
+  type: select
+  url: *pingurl
+  interval: 600
+  use-url:
+    - *suburl
+- name: Auto
+  icon: https://raw.githubusercontent.com/shindgewongxj/WHATSINStash/main/icon/urltest.png
+  type: url-test
+  url: *pingurl
+  interval: 600
+  use-url:
+    - *suburl
+- name: Fallback
+  icon: https://raw.githubusercontent.com/shindgewongxj/WHATSINStash/main/icon/fallback.png
+  type: fallback
+  url: *pingurl
+  interval: 600
+  use-url:
+    - *suburl
+- name: Load Balance
+  icon: https://raw.githubusercontent.com/shindgewongxj/WHATSINStash/main/icon/loadbalance.png
+  type: load-balance
+  strategy: consistent-hashing  # round-robin
+  url: *pingurl
+  interval: 600
+  use-url:
+    - *suburl
+- name: Apple
+  icon: https://raw.githubusercontent.com/shindgewongxj/WHATSINStash/main/icon/apple.png
+  type: select
+  url: *pingurl
+  interval: 600
+  proxies:
+    - $tash
+    - Select
+    - Auto
+    - Load Balance
+    - Fallback
+- name: Game
+  icon: https://raw.githubusercontent.com/shindgewongxj/WHATSINStash/main/icon/arcade.png
+  type: select
+  url: *pingurl
+  interval: 600
+  proxies:
+    - $tash
+    - Select
+    - Auto
+    - Load Balance
+    - Fallback
+- name: Media
+  icon: https://raw.githubusercontent.com/shindgewongxj/WHATSINStash/main/icon/itunesstore.png
+  type: select
+  url: *pingurl
+  interval: 600
+  proxies:
+    - $tash
+    - Select
+    - Auto
+    - Load Balance
+    - Fallback
+- name: IPMocking
+  icon: https://raw.githubusercontent.com/shindgewongxj/WHATSINStash/main/icon/safari.png
+  type: select
+  url: *pingurl
+  interval: 600
+  proxies:
+    - $tash
+    - Select
+    - Auto
+    - Load Balance
+    - Fallback
+  
+
+rule-providers:
+  ASN China Mainland:
+    behavior: classical
+    url: https://raw.githubusercontent.com/shindgewongxj/WHATSINStash/main/ruleset/asncn.yaml
+    interval: 86400
+  IPMocking:
+    behavior: domain-text
+    url: https://raw.githubusercontent.com/shindgewongxj/WHATSINStash/main/ruleset/ipmocking.txt
+    interval: 86400
+  Apple:
+    behavior: domain-text
+    url: https://raw.githubusercontent.com/shindgewongxj/WHATSINStash/main/ruleset/apple.txt
+    interval: 86400
+  Game:
+    behavior: domain-text
+    url: https://raw.githubusercontent.com/shindgewongxj/WHATSINStash/main/ruleset/game.txt
+    interval: 86400
+  Media:
+    behavior: domain-text
+    url: https://raw.githubusercontent.com/shindgewongxj/WHATSINStash/main/ruleset/media.txt
+    interval: 86400
+  Advertisments:
+    behavior: domain-text
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/advertisements.txt
+    interval: 86400
+ 
+ 
+rules:
+- RULE-SET,Advertisments,REJECT
+- RULE-SET,IPMocking,IPMocking
+- RULE-SET,Apple,Apple
+- RULE-SET,Game,Game
+- RULE-SET,Media,Media
+- RULE-SET,ASN China Mainland,DIRECT,no-resolve
+- MATCH,$tash
