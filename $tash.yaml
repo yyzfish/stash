@@ -105,8 +105,8 @@ proxy-groups:
 
 rule-providers:
   ASN China Mainland:
-    behavior: classical
-    url: https://raw.githubusercontent.com/shindgewongxj/WHATSINStash/main/ruleset/asncn.yaml
+    behavior: domain
+    url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/direct.txt
     interval: 86400
   IPMocking:
     behavior: domain-text
