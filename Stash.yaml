@@ -507,15 +507,15 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Weibo/Weibo.yaml
 
   Mainland-rules:
-    behavior: classical
+    behavior: domain
     interval: 86400
     name: Mainland
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/China/China.yaml
+    url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/direct.txt
   MainlandIP-rules:
     behavior: ipcidr
     interval: 86400
     name: MainlandIP
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/ChinaIPs/ChinaIPs_IP.yaml
+    url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt
 
   Globle-rules:
     behavior: classical
