@@ -56,7 +56,7 @@ proxy-providers:
 
   MyProxy: &MyProxy #建立锚点
      #多机场用户请使用Sub-Store生成自己的订阅地址并替换以下url地址
-    url: http://sub.store/download/collection/MySub
+    url: https://sub.nexconvert.com/downloadConfig/NodeList.aspx?qx=2&urk=83c2ab5d-4d87-4d6b-9abc-4693cabef7ae
     interval: 86400
     health-check:
       enable: true
